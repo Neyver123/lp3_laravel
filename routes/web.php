@@ -17,7 +17,7 @@ use App\Http\Controllers\CursoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::resource('estudiante', EstudianteController::class);
