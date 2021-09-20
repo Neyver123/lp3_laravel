@@ -18,7 +18,7 @@ class EstudianteController extends Controller
         $estudiantes = $estudiante::get();
         return view('estudiante.mostrar')
             ->with('estudiantes', $estudiantes)
-            ->with('titulo', 'mostrar estudiantes');
+            ->with('titulo', 'MOSTRAR ESTUDIANTES');
     }
 
     /**

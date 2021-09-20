@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use Illuminate\Support\Facades\Auth;
 
 class CursoController extends Controller
 {
@@ -14,12 +15,16 @@ class CursoController extends Controller
      */
     public function index()
     {
+        if(Auth::check()){
         $curso = new Curso();
         $resultado = $curso::get();
         //return view('curso.mostrar', ['cursos'=>$resultado]);
-        return view('curso.mostrar')
+        return view('producto.mostrar')
                 ->with('cursos', $resultado)
-                ->with('titulo', 'mostrar cursos');
+                ->with('titulo', 'MOSTRAR CURSO');
+        }else{
+            return redirect(route('login'));
+        }
     }
 
     /**

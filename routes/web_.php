@@ -5,7 +5,6 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\CursoController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,16 +17,10 @@ use App\Http\Controllers\CursoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-Route::resource('estudiante', EstudianteController::class)->middleware('auth');
-Route::resource('curso', CursoController::class)->middleware('auth');
-Route::get('matricula/mostrar', [MatriculaController::class, 'mostrar'])->middleware('auth');
-Route::get('notas/{id}', [NotaController::class, 'notaPorId'])->middleware('auth');
+Route::resource('estudiante', EstudianteController::class);
+Route::resource('curso', CursoController::class);
+Route::get('matricula/mostrar', [MatriculaController::class, 'mostrar']);
+Route::get('notas/{id}', [NotaController::class, 'notaPorId']);
